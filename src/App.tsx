@@ -15,10 +15,6 @@ function App() {
     name: string;
   };
 
-  type DeleteProduct = {
-    id: number;
-  };
-
   const [products, setProducts] = useState<Product[]>([]);
   const [productNameInput, setProductNameInput] = useState("");
   const [idInput, setIdInput] = useState(0);
