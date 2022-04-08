@@ -5,18 +5,18 @@ import { fakeApi } from "./services/fakeApi";
 import axios from "axios";
 
 function App() {
-  type Product = {
+  type Tasks = {
     id: number;
-    name: string;
+    description: string;
   };
 
-  type CreateProduct = {
+  type CreateTask = {
     id?: number;
-    name: string;
+    description: string;
   };
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [productNameInput, setProductNameInput] = useState("");
+  const [tasks, setTasks] = useState<Tasks[]>([]);
+  const [taskDescriptionInput, setTaskDescriptionInput] = useState("");
   const [idInput, setIdInput] = useState(0);
   const [activities, setActivities] = useState(" ");
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
@@ -42,37 +42,37 @@ function App() {
   }
 
   async function getProducts() {
-    const response = await fakeApi.get("products");
+    const response = await fakeApi.get("tasks");
 
     const fakeProducts = response.data;
 
-    setProducts(fakeProducts);
+    setTasks(fakeProducts);
   }
 
   async function createProduct(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const data: CreateProduct = {
-      name: productNameInput,
+    const data: CreateTask = {
+      description: taskDescriptionInput,
     };
 
-    if (!data.name) {
+    if (!data.description) {
       alert("Nome ou valor do produto faltando...");
       return;
     }
 
-    const response = await fakeApi.post("products", data);
+    const response = await fakeApi.post("tasks", data);
 
     const fakeProduct = response.data;
 
-    setProducts((previousState) => [...previousState, fakeProduct]);
-    setProductNameInput("");
+    setTasks((previousState) => [...previousState, fakeProduct]);
+    setTaskDescriptionInput("");
   }
 
   async function deleteProduct(idInput: number) {
-    await fakeApi.delete(`products/${idInput}`);
+    await fakeApi.delete(`tasks/${idInput}`);
 
-    setProducts((previousState) =>
+    setTasks((previousState) =>
       previousState.filter((product) => product.id !== idInput)
     );
     setIdInput(0);
@@ -89,12 +89,12 @@ function App() {
       </header>
       <body>
         <form onSubmit={createProduct}>
-          <label htmlFor="product-name">Tasks: </label>
+          <label htmlFor="task-description">Tasks: </label>
           <input
             type="text"
-            id="product-name"
-            value={productNameInput}
-            onChange={(event) => setProductNameInput(event.target.value)}
+            id="task-description"
+            value={taskDescriptionInput}
+            onChange={(event) => setTaskDescriptionInput(event.target.value)}
           />
           <button id="myButton" type="submit">
             Add tasks
@@ -103,9 +103,9 @@ function App() {
         <section id="section-tasks">
           <h2 id="title-section-tasks">Tasks to do</h2>
           <ul className="products">
-            {products.map((product) => (
+            {tasks.map((product) => (
               <li key={product.id}>
-                <p>{product.name}</p>
+                <p>{product.description}</p>
                 <button onClick={() => deleteProduct(product.id)}>
                   <img
                     src="https://img1.gratispng.com/20180203/afq/kisspng-button-icon-delete-button-png-image-5a756de9bd9403.9092848715176452897765.jpg"

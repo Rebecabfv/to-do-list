@@ -33,7 +33,7 @@ input {
   border: 2px solid #ccc;
   width: 40%;
   border-radius: 0.3em;
-  margin: 80px auto;
+  margin: 60px auto;
   overflow-y: auto;
   max-height: 500px;
 }
@@ -81,7 +81,7 @@ header {
   position: fixed;
   width: 100%;
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 
 footer {
