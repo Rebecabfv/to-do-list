@@ -34,6 +34,8 @@ input {
   width: 40%;
   border-radius: 0.3em;
   margin: 80px auto;
+  overflow-y: auto;
+  max-height: 500px;
 }
 
 li {
