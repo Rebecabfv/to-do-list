@@ -22,13 +22,27 @@ button {
   font-size: 90%;
 }
 
+#title-section-tasks {
+  background: #ccc;
+  border: 2px solid #ccc;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+
 #section-tasks {
+  border: 2px solid #ccc;
+  width: 40%;
+  border-radius: 0.3em;
+  margin: 200px auto;
+}
+  
 }
 
 li {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #ccc;
 }
 
 header {
@@ -58,4 +72,12 @@ header {
 #myButton:active {
   position: relative;
   top: 1px;
+}
+
+footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
 }

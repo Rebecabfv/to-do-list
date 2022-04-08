@@ -101,7 +101,7 @@ function App() {
           </button>
         </form>
         <section id="section-tasks">
-          <h2>Tasks to do:</h2>
+          <h2 id="title-section-tasks">Tasks to do:</h2>
           <ul className="products">
             {products.map((product) => (
               <li key={product.id}>
