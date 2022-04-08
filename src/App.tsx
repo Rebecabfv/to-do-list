@@ -118,12 +118,15 @@ function App() {
           </ul>
         </section>
         <section>
-          <h4>Essa é a atividade randomica gerada: </h4>
+          <h4>Finished your tasks?</h4>
+          <h4>Here is a suggested activity for you!</h4>
           {isLoadingProfile && (
-            <p>Aguarde... estamos buscando algo interessante para você</p>
+            <p>Wait... we're looking for something interesting for you</p>
           )}
           {!isLoadingProfile && <p>{activities}</p>}
-          <button onClick={handleGetActivity}>Alterar atividade</button>
+          <button id="myButton" onClick={handleGetActivity}>
+            New activity
+          </button>
         </section>
       </body>
       <footer>By Cecilia Andrea Pesce and Rebeca Baptista</footer>
