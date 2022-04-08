@@ -84,37 +84,47 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Tasks</h1>
-
-      <form onSubmit={createProduct}>
-        <label htmlFor="product-name">Tasks</label>
-        <input
-          type="text"
-          id="product-name"
-          value={productNameInput}
-          onChange={(event) => setProductNameInput(event.target.value)}
-        />
-
-        <button type="submit">Add tasks</button>
-      </form>
-
-      <h2>Produtos</h2>
-
-      <ul className="products">
-        {products.map((product) => (
-          <li key={product.id}>
-            <p>{product.name}</p>
-            <button onClick={() => deleteProduct(product.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-
-      <h1>Essa é a atividade randomica gerada: </h1>
-      {isLoadingProfile && (
-        <h2>Aguarde... estamos buscando algo interessante para você</h2>
-      )}
-      {!isLoadingProfile && <h2>{activities}</h2>}
-      <button onClick={handleGetActivity}>Alterar atividade</button>
+      <header>
+        <h1>To Do List</h1>
+      </header>
+      <body>
+        <form onSubmit={createProduct}>
+          <label htmlFor="product-name">Tasks: </label>
+          <input
+            type="text"
+            id="product-name"
+            value={productNameInput}
+            onChange={(event) => setProductNameInput(event.target.value)}
+          />
+          <button type="submit">Add tasks</button>
+        </form>
+        <section id="section-tasks">
+          <h2>Tasks to do:</h2>
+          <ul className="products">
+            {products.map((product) => (
+              <li key={product.id}>
+                <p>{product.name}</p>
+                <button onClick={() => deleteProduct(product.id)}>
+                  <img
+                    src="https://img1.gratispng.com/20180203/afq/kisspng-button-icon-delete-button-png-image-5a756de9bd9403.9092848715176452897765.jpg"
+                    height="30"
+                    width="30"
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section>
+          <h4>Essa é a atividade randomica gerada: </h4>
+          {isLoadingProfile && (
+            <p>Aguarde... estamos buscando algo interessante para você</p>
+          )}
+          {!isLoadingProfile && <p>{activities}</p>}
+          <button onClick={handleGetActivity}>Alterar atividade</button>
+        </section>
+      </body>
+      <footer></footer>
     </div>
   );
 }
