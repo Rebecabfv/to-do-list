@@ -96,7 +96,9 @@ function App() {
             value={productNameInput}
             onChange={(event) => setProductNameInput(event.target.value)}
           />
-          <button type="submit">Add tasks</button>
+          <button id="myButton" type="submit">
+            Add tasks
+          </button>
         </form>
         <section id="section-tasks">
           <h2>Tasks to do:</h2>
@@ -124,7 +126,7 @@ function App() {
           <button onClick={handleGetActivity}>Alterar atividade</button>
         </section>
       </body>
-      <footer></footer>
+      <footer>By Cecilia Andrea Pesce and Rebeca Baptista</footer>
     </div>
   );
 }
