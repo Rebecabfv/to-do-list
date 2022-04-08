@@ -101,7 +101,7 @@ function App() {
           </button>
         </form>
         <section id="section-tasks">
-          <h2 id="title-section-tasks">Tasks to do:</h2>
+          <h2 id="title-section-tasks">Tasks to do</h2>
           <ul className="products">
             {products.map((product) => (
               <li key={product.id}>
@@ -117,7 +117,7 @@ function App() {
             ))}
           </ul>
         </section>
-        <section>
+        <section id="tasks-extras">
           <h4>Finished your tasks?</h4>
           <h4>Here is a suggested activity for you!</h4>
           {isLoadingProfile && (
