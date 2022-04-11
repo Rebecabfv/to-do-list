@@ -89,7 +89,7 @@ function App() {
       </header>
       <body>
         <form onSubmit={createTask}>
-          <label htmlFor="task-description">Tasks: </label>
+          <label htmlFor="task-description"></label>
           <input
             type="text"
             id="task-description"
