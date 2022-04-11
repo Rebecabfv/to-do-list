@@ -41,15 +41,15 @@ function App() {
     }
   }
 
-  async function getProducts() {
+  async function getTasks() {
     const response = await fakeApi.get("tasks");
 
-    const fakeProducts = response.data;
+    const fakeTasks = response.data;
 
-    setTasks(fakeProducts);
+    setTasks(fakeTasks);
   }
 
-  async function createProduct(event: React.FormEvent<HTMLFormElement>) {
+  async function createTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const data: CreateTask = {
@@ -57,29 +57,29 @@ function App() {
     };
 
     if (!data.description) {
-      alert("Nome ou valor do produto faltando...");
+      alert("Please insert a task...");
       return;
     }
 
     const response = await fakeApi.post("tasks", data);
 
-    const fakeProduct = response.data;
+    const fakeTask = response.data;
 
-    setTasks((previousState) => [...previousState, fakeProduct]);
+    setTasks((previousState) => [...previousState, fakeTask]);
     setTaskDescriptionInput("");
   }
 
-  async function deleteProduct(idInput: number) {
+  async function deleteTask(idInput: number) {
     await fakeApi.delete(`tasks/${idInput}`);
 
     setTasks((previousState) =>
-      previousState.filter((product) => product.id !== idInput)
+      previousState.filter((task) => task.id !== idInput)
     );
     setIdInput(0);
   }
 
   useEffect(() => {
-    getProducts();
+    getTasks();
   }, []);
 
   return (
@@ -88,7 +88,7 @@ function App() {
         <h1>To Do List</h1>
       </header>
       <body>
-        <form onSubmit={createProduct}>
+        <form onSubmit={createTask}>
           <label htmlFor="task-description">Tasks: </label>
           <input
             type="text"
@@ -102,11 +102,11 @@ function App() {
         </form>
         <section id="section-tasks">
           <h2 id="title-section-tasks">Tasks to do</h2>
-          <ul className="products">
-            {tasks.map((product) => (
-              <li key={product.id}>
-                <p>{product.description}</p>
-                <button onClick={() => deleteProduct(product.id)}>
+          <ul className="tasks">
+            {tasks.map((task) => (
+              <li key={task.id}>
+                <p>{task.description}</p>
+                <button onClick={() => deleteTask(task.id)}>
                   <img
                     src="https://img1.gratispng.com/20180203/afq/kisspng-button-icon-delete-button-png-image-5a756de9bd9403.9092848715176452897765.jpg"
                     height="30"
